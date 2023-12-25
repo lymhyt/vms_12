@@ -77,8 +77,6 @@ const authenticateToken = (req, res, next) => {
  *     summary: Register staff member
  *     tags:
  *       - Staff
- *     security:
- *       - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
