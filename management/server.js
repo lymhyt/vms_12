@@ -386,11 +386,6 @@ app.post('/logout', authenticateToken, async (req, res) => {
           email : "yat@gmail.com",
         },
       },
-      servers: [
-        {
-          url : "http://localhost:4000/",
-        },
-      ],
     },
     apis: ["server.js"],
   };
