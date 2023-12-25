@@ -35,7 +35,7 @@ const options = {
   
   
   const specs = swaggerJsdoc(options)
-  app.use("/docs",swaggerui.serve,swaggerui.setup(specs)
+  app.use("/api-docs",swaggerui.serve,swaggerui.setup(specs)
     )
 
 // MongoDB connection
