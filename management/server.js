@@ -378,7 +378,7 @@ app.post('/logout', authenticateToken, async (req, res) => {
       openapi :"3.0.0",
       info :{
         title : "Company Management System",
-        version : "0.1",
+        version : "1.0.0",
         description : "This is a company management system made with Express and documented with Swagger",
         contact :{
           name : "Yat",
