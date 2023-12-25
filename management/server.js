@@ -65,6 +65,7 @@ const authenticateToken = (req, res, next) => {
 };
 
 /**
+ * @swagger
  *  /login-staff:
     post:
       summary: Staff login
