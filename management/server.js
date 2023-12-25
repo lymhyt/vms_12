@@ -2,6 +2,8 @@ const express = require('express');
 const mongodb = require('mongodb');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const swaggerJsdoc = require ("swagger-jsdoc");
+const swaggerui = require ("swagger-ui-express");
 
 const app = express();
 const port = 4000;
@@ -19,6 +21,28 @@ const appointmentCollection = 'appointments';
 
 // Middleware for parsing JSON data
 app.use(express.json());
+
+/*const options = {
+   /* definition :{
+      openapi :"3.0.0",
+      info :{
+        title : "Company Management System",
+        version : "0.1",
+       /* description : "This is a company management system made with Express and documented with Swagger",
+        contact :{
+          name : "Yat",
+          url: "yat.com",
+          email : "yat@gmail.com",
+        },*/
+     /* },
+      servers: [
+        {
+          url : "http://localhost:4000/",
+        },
+      ],
+    },
+    apis: ["server.js"],
+  };*/
 
 // MongoDB connection
 mongodb.MongoClient.connect(mongoURL, { useUnifiedTopology: true })
@@ -45,6 +69,37 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+/**
+ * @swagger
+ * /register-staff:
+ *   post:
+ *     summary: Register staff member
+ *     tags:
+ *       - Staff
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Staff registered successfully
+ *       401:
+ *         description: Invalid or unauthorized token
+ *       403:
+ *         description: Invalid or unauthorized token
+ *       409:
+ *         description: Username already exists
+ */
 
 // Register staff
 app.post('/register-staff', authenticateToken, async (req, res) => {
@@ -317,12 +372,42 @@ app.post('/logout', authenticateToken, async (req, res) => {
       res.status(500).send('Invalid role');
     }
   });
+
+  const options = {
+    definition :{
+      openapi :"3.0.0",
+      info :{
+        title : "Company Management System",
+        version : "0.1",
+        description : "This is a company management system made with Express and documented with Swagger",
+        contact :{
+          name : "Yat",
+          url: "yat.com",
+          email : "yat@gmail.com",
+        },
+      },
+      servers: [
+        {
+          url : "http://localhost:4000/",
+        },
+      ],
+    },
+    apis: ["server.js"],
+  };
+  
+  
+  const specs = swaggerJsdoc(options)
+  app.use(
+    "/api-docs",
+    swaggerui.serve,
+    swaggerui.setup(specs)
+    )
   
     // Start the server
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
-  })
+})
   .catch((error) => {
     console.log('Error connecting to MongoDB:', error);
   });
