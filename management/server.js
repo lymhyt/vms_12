@@ -75,8 +75,6 @@ const authenticateToken = (req, res, next) => {
  * /register-staff:
  *   post:
  *     summary: Register staff member
- *     tags:
- *       - Staff
  *     requestBody:
  *       required: true
  *       content:
@@ -88,6 +86,7 @@ const authenticateToken = (req, res, next) => {
  *                 type: string
  *               password:
  *                 type: string
+ *                 description: The password of the staff
  *     responses:
  *       200:
  *         description: Staff registered successfully
@@ -215,6 +214,52 @@ app.post('/login-staff', async (req, res) => {
           res.status(500).send('Error storing token');
         });
     });
+
+/**
+ * @swagger
+ * /appointments:
+    post:
+      summary: Create appointment
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appointment'
+      responses:
+        '200':
+          description: Appointment created successfully
+        '500':
+          description: Error creating appointment
+
+    get:
+      summary: Get all appointments (for security)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: name
+          in: query
+          description: Filter by name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appointment'
+        '403':
+          description: Invalid or unauthorized token
+        '500':
+          description: Error retrieving appointments
+
+ *  */    
+    
 
     // Create appointment
     app.post('/appointments', async (req, res) => {
