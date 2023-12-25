@@ -419,15 +419,9 @@ app.post('/logout', authenticateToken, async (req, res) => {
       info :{
         title : "Company Management System",
         version : "1.0.0",
-        description : "This is a company management system made with Express and documented with Swagger",
-        contact :{
-          name : "Yat",
-          url: "yat.com",
-          email : "yat@gmail.com",
-        },
       },
     },
-    apis: ["server.js"],
+    apis: ["./server.js"],
   };
   
   
