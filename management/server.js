@@ -74,9 +74,9 @@ const authenticateToken = (req, res, next) => {
  * @swagger
  * /register-staff:
  *   post:
- *     summary: Register staff member
+ *     summary: Register a new staff member
+ *     description: Registers a new staff member with username and password.
  *     requestBody:
- *       required: true
  *       content:
  *         application/json:
  *           schema:
@@ -86,12 +86,9 @@ const authenticateToken = (req, res, next) => {
  *                 type: string
  *               password:
  *                 type: string
- *                 description: The password of the staff
  *     responses:
  *       200:
  *         description: Staff registered successfully
- *       401:
- *         description: Invalid or unauthorized token
  *       403:
  *         description: Invalid or unauthorized token
  *       409:
