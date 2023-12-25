@@ -22,27 +22,21 @@ const appointmentCollection = 'appointments';
 // Middleware for parsing JSON data
 app.use(express.json());
 
-/*const options = {
-   /* definition :{
+const options = {
+    definition :{
       openapi :"3.0.0",
       info :{
         title : "Company Management System",
-        version : "0.1",
-       /* description : "This is a company management system made with Express and documented with Swagger",
-        contact :{
-          name : "Yat",
-          url: "yat.com",
-          email : "yat@gmail.com",
-        },*/
-     /* },
-      servers: [
-        {
-          url : "http://localhost:4000/",
-        },
-      ],
+        version : "1.0.0",
+      },
     },
-    apis: ["server.js"],
-  };*/
+    apis: ["./server.js"],
+  };
+  
+  
+  const specs = swaggerJsdoc(options)
+  app.use("/api-docs",swaggerui.serve,swaggerui.setup(specs)
+    )
 
 // MongoDB connection
 mongodb.MongoClient.connect(mongoURL, { useUnifiedTopology: true })
@@ -413,7 +407,7 @@ app.post('/logout', authenticateToken, async (req, res) => {
     }
   });
 
-  const options = {
+  /*const options = {
     definition :{
       openapi :"3.0.0",
       info :{
@@ -422,14 +416,11 @@ app.post('/logout', authenticateToken, async (req, res) => {
       },
     },
     apis: ["./server.js"],
-  };
+  };*/
   
   
   const specs = swaggerJsdoc(options)
-  app.use(
-    "/api-docs",
-    swaggerui.serve,
-    swaggerui.setup(specs)
+  app.use("/api-docs",swaggerui.serve,swaggerui.setup(specs)
     )
   
     // Start the server
