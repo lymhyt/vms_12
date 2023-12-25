@@ -59,4 +59,4 @@ jobs:
           app-name: 'VMS1'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2E6AB86B7356429AA287464B0D8DC34A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_63538696D87E466C88C5BCA6E9C3C46D }}
