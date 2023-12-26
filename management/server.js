@@ -95,7 +95,7 @@ const authenticateToken = (req, res, next) => {
  */
 
 
-// Register staff
+// Register staff swagger first
 app.post('/register-staff', authenticateToken, async (req, res) => {
   const { role } = req.user;
 
