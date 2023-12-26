@@ -156,35 +156,6 @@ app.post('/register-security', async (req, res) => {
     });
 });
 
-/**
- * @swagger
- *  /login-staff:
- *   post:
- *     summary: Staff login
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *             username:
- *                 type: string
- *               password:
- *                 type: string
- *     responses:
- *       '200':
- *         description: Successful login
- *         content:
- *           application/json:
- *            schema:
- *               type: object
- *               properties:
- *                 token:
- *                   type: string
- *       '401':
- *         description: Invalid credentials
- */
 
     // Staff login
 app.post('/login-staff', async (req, res) => {
