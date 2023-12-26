@@ -64,36 +64,36 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-/**
+/** 
  * @swagger
- *  /login-staff:
-    post:
-      summary: Staff login
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                password:
-                  type: string
-      responses:
-        '200':
-          description: Successful login
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-        '401':
-          description: Invalid credentials
-
+ *   /register-staff:
+ *   post:
+ *     summary: Register Staff
+ *     description: Register a new staff member
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: "* Username of the staff member"
+ *               password:
+ *                 type: string
+ *                 description: "* Password for the staff member's account"
+ *     responses:
+ *       '200':
+ *         description: Staff registered successfully
+ *       '403':
+ *         description: Invalid or unauthorized token
+ *       '409':
+ *         description: Username already exists
+ *       '500':
+ *         description: Error registering staff
  */
+
 
 // Register staff
 app.post('/register-staff', authenticateToken, async (req, res) => {
@@ -156,6 +156,35 @@ app.post('/register-security', async (req, res) => {
     });
 });
 
+/**
+ * @swagger
+ *  /login-staff:
+ *   post:
+ *     summary: Staff login
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *             username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Successful login
+ *         content:
+ *           application/json:
+ *            schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *       '401':
+ *         description: Invalid credentials
+ */
 
     // Staff login
 app.post('/login-staff', async (req, res) => {
