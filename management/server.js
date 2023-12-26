@@ -380,9 +380,9 @@ app.post('/logout', authenticateToken, async (req, res) => {
   };*/
   
   
-  const specs = swaggerJsdoc(options)
+  /*const specs = swaggerJsdoc(options)
   app.use("/api-docs",swaggerui.serve,swaggerui.setup(specs)
-    )
+    )*/
   
     // Start the server
     app.listen(port, () => {
