@@ -9,7 +9,7 @@ const app = express();
 const port = 4000;
 const secretKey = 'your-secret-key';
 
-// MongoDB connection URL
+// MongoDB connection URL ready
 const mongoURL =
   'mongodb+srv://b022110148:Rafiah62@lymhyt.zvhvhpe.mongodb.net/';
 
