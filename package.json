@@ -6,5 +6,15 @@
     "mongo": "^0.1.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0"
-  }
+  },
+  "name": "assg_123",
+  "description": "<<<<<<< HEAD\r # assg_123\r =======\r # vms_12\r >>>>>>> 348492aab6159f4f83c3533aa601dec102303d4e",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
