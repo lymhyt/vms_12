@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongo": "^0.1.0",
@@ -11,7 +12,6 @@
   "description": "<<<<<<< HEAD\r # assg_123\r =======\r # vms_12\r >>>>>>> 348492aab6159f4f83c3533aa601dec102303d4e",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,6 +1,6 @@
 const express = require('express');
 const mongodb = require('mongodb');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const swaggerJsdoc = require ("swagger-jsdoc");
 const swaggerui = require ("swagger-ui-express");
@@ -95,13 +95,6 @@ const authenticateToken = (req, res, next) => {
  *         description: Username already exists
  *       500:
  *         description: Error registering staff
- * security:
- * - token: []
- * securityDefinitions:
- * token:
- *  type: apiKey
- *   name: token
- * in: header
  */
 
 // Register staff swagger first
