@@ -2,8 +2,8 @@ const express = require('express');
 const mongodb = require('mongodb');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const swaggerJsdoc = require ("swagger-jsdoc");
-const swaggerui = require ("swagger-ui-express");
+/*const swaggerJsdoc = require ("swagger-jsdoc");
+const swaggerui = require ("swagger-ui-express");*/
 
 const app = express();
 const port =process.env.PORT || 4000;
@@ -22,7 +22,7 @@ const appointmentCollection = 'appointments';
 // Middleware for parsing JSON data
 app.use(express.json());
 
-const options = {
+/*const options = {
     definition :{
       openapi :"3.0.0",
       info :{
@@ -38,12 +38,8 @@ const options = {
   const specs = swaggerJsdoc(options)
   app.use("/api-docs",swaggerui.serve,swaggerui.setup(specs)
     )
+*/
 
-/**
- * @swagger
- * tags:
- *   - name:Visitor
- */
 
 // MongoDB connection
 mongodb.MongoClient.connect(mongoURL /*{ useNewUrlParser: true, useUnifiedTopology: true, }*/)
@@ -71,37 +67,6 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-/**
- * @swagger
- * /register-staff:
- *   post:
- *     tags:
- *       - Staff
- *     summary: Register a new staff member.
- *     description: Register a new staff member with a unique username and password.
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               username:
- *                 type: string
- *                 description: The username for the new staff member.
- *               password:
- *                 type: string
- *                 description: The password for the new staff member.
- *     responses:
- *       '200':
- *         description: Staff registered successfully.
- *       '403':
- *         description: Invalid or unauthorized token.
- *       '409':
- *         description: Username already exists.
- *       '500':
- *         description: Error registering staff.
- */
 
 // Register staff swagger first
 app.post('/register-staff', authenticateToken, async (req, res) => {
@@ -376,21 +341,7 @@ app.post('/logout', authenticateToken, async (req, res) => {
     }
   });
 
-  /*const options = {
-    definition :{
-      openapi :"3.0.0",
-      info :{
-        title : "Company Management System",
-        version : "1.0.0",
-      },
-    },
-    apis: ["./server.js"],
-  };*/
   
-  
-  /*const specs = swaggerJsdoc(options)
-  app.use("/api-docs",swaggerui.serve,swaggerui.setup(specs)
-    )*/
   
     // Start the server
     app.listen(port, () => {
