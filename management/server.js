@@ -64,36 +64,45 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-/** 
+/**
  * @swagger
- *   /register-staff:
+ * /register-staff:
  *   post:
- *     summary: Register Staff
- *     description: Register a new staff member
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               username:
- *                 type: string
- *                 description: "* Username of the staff member"
- *               password:
- *                 type: string
- *                 description: "* Password for the staff member's account"
+ *     tags:
+ *       - Staff
+ *     summary: Registers a new staff member.
+ *     parameters:
+ *       - in: body
+ *         name: staff
+ *         description: Staff object that needs to be added.
+ *         schema:
+ *           type: object
+ *           required:
+ *             - username
+ *             - password
+ *           properties:
+ *             username:
+ *             type: string
+ *             password:
+ *               type: string
+ *               format: password
  *     responses:
- *       '200':
+ *       200:
  *         description: Staff registered successfully
- *       '403':
+ *       403:
  *         description: Invalid or unauthorized token
- *       '409':
+ *       409:
  *         description: Username already exists
- *       '500':
+ *       500:
  *         description: Error registering staff
+ * security:
+ *- token: []
+ * securityDefinitions:
+ * token:
+ *  type: apiKey
+ *   name: token
+ * in: header
  */
-
 
 // Register staff swagger first
 app.post('/register-staff', authenticateToken, async (req, res) => {
