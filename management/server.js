@@ -6,7 +6,7 @@ const swaggerJsdoc = require ("swagger-jsdoc");
 const swaggerui = require ("swagger-ui-express");
 
 const app = express();
-const port = 4000;
+const port =process.env.PORT || 4000;
 const secretKey = 'your-secret-key';
 
 // MongoDB connection URL ready
@@ -29,6 +29,7 @@ const options = {
         title : "Company Management System",
         version : "1.0.0",
       },
+
     },
     apis: ["./server.js"],
   };
@@ -37,6 +38,12 @@ const options = {
   const specs = swaggerJsdoc(options)
   app.use("/api-docs",swaggerui.serve,swaggerui.setup(specs)
     )
+
+/**
+ * @swagger
+ * tags:
+ *   - name:Visitor
+ */
 
 // MongoDB connection
 mongodb.MongoClient.connect(mongoURL /*{ useNewUrlParser: true, useUnifiedTopology: true, }*/)
