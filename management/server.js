@@ -30,7 +30,7 @@ const options = {
         version : "1.0.0",
       },
     },
-    apis: ["./server.js"],
+    apis: [".management/server.js"],
   };
   
   
