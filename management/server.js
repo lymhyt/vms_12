@@ -70,31 +70,30 @@ const authenticateToken = (req, res, next) => {
  *   post:
  *     tags:
  *       - Staff
- *     summary: Registers a new staff member.
- *     parameters:
- *       - in: body
- *         name: staff
- *         description: Staff object that needs to be added.
- *         schema:
- *           type: object
- *           required:
- *             - username
- *             - password
- *           properties:
- *             username:
- *             type: string
- *             password:
- *               type: string
- *               format: password
+ *     summary: Register a new staff member.
+ *     description: Register a new staff member with a unique username and password.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: The username for the new staff member.
+ *               password:
+ *                 type: string
+ *                 description: The password for the new staff member.
  *     responses:
- *       200:
- *         description: Staff registered successfully
- *       403:
- *         description: Invalid or unauthorized token
- *       409:
- *         description: Username already exists
- *       500:
- *         description: Error registering staff
+ *       '200':
+ *         description: Staff registered successfully.
+ *       '403':
+ *         description: Invalid or unauthorized token.
+ *       '409':
+ *         description: Username already exists.
+ *       '500':
+ *         description: Error registering staff.
  */
 
 // Register staff swagger first
