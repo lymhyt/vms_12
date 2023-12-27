@@ -96,7 +96,7 @@ const authenticateToken = (req, res, next) => {
  *       500:
  *         description: Error registering staff
  * security:
- *- token: []
+ * - token: []
  * securityDefinitions:
  * token:
  *  type: apiKey
