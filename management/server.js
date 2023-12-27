@@ -13,7 +13,7 @@ const secretKey = 'your-secret-key';
 const mongoURL =
   'mongodb+srv://b022110148:Rafiah62@lymhyt.zvhvhpe.mongodb.net/';
 
-// MongoDB database and collections names
+// MongoDB database and collections names.
 const dbName = 'appointment';
 const staffCollection = 'staff';
 const securityCollection = 'security';
