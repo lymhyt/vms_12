@@ -30,7 +30,7 @@ const options = {
         version : "1.0.0",
       },
     },
-    apis: [".management/server.js"],
+    apis: ["./server.js"],
   };
   
   
@@ -39,7 +39,7 @@ const options = {
     )
 
 // MongoDB connection
-mongodb.MongoClient.connect(mongoURL, { useUnifiedTopology: true })
+mongodb.MongoClient.connect(mongoURL /*{ useNewUrlParser: true, useUnifiedTopology: true, }*/)
   .then((client) => {
     const db = client.db(dbName);
     const staffDB = db.collection(staffCollection);
